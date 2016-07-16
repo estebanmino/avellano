@@ -1,0 +1,20 @@
+<h2>Confirmación</h2>
+
+<%= render 'address_info' %>
+
+
+<% if @order_items.size == 0 %>
+  <p class="text-center">
+    No hay productos en el carro de compras.  Dirijase a <%= link_to "Tienda", shop_path %> y agrega los productos que desees.
+  </p>
+<% else %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+  <% end %>
+
+
+  <%= form_for(current_order, url: confirm_path) do |f| %>
+    <%= f.submit "Confirmar", class: "btn btn-primary" %>
+  <% end %>
+
+<% end %>

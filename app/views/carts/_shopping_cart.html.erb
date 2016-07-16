@@ -1,0 +1,23 @@
+<% if !@order_item.nil? && @order_item.errors.any? %>
+  <div class="alert alert-danger">
+    <ul>
+    <% @order_item.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+<% if @order_items.size == 0 %>
+  <p class="text-center">
+    No hay productos en el carro de compras.  Dirijase a <%= link_to "Tienda", shop_path %> y agrega los productos que desees.
+  </p>
+<% else %>
+  <% @order_items.each do |order_item| %>
+    <%= render 'carts/cart_row', product: order_item.product, order_item: order_item, show_total: true %>
+  <% end %>
+
+    <h4 class="text-right">Precio total: <span style="color: green">$<%= current_order.subtotal %></span></h4>
+
+  <%= link_to  'Checkout', checkout_path, class: 'btn btn-primary'  %>
+
+<% end %>

@@ -1,0 +1,27 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Products</h1>
+
+  <div class="container-fluid">
+  <div class="row">
+    <% @products.each do |product| %>
+    <td>
+      <div class="col-xs-4 text-center">
+        <div class="panel panel-default" >
+          <%= link_to  product , class: 'btn btn-product' do %>
+          <h3><%= product.name %></h3>
+          <div class="panel-picture" >
+            <%= image_tag product.picture, class: "img-panel img-responsive" %>
+          </div>
+          <p><strong>Precio: <%= product.price  %></strong></p>
+          <%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+</td>
+<br>
+<%= link_to 'New Product', new_product_path %>

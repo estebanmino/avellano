@@ -1,0 +1,9 @@
+<% address = Address.find_by_id session[:address_id] %>
+
+<h3><%= address.first_name %></h3>
+<h3><%= address.last_name %></h3>
+<h3><%= address.email %></h3>
+<h3><%= address.street %></h3>
+<h3><%= address.number %></h3>
+<h3><%= address.commune %></h3>
+<h3><%= address.phone_number %></h3>

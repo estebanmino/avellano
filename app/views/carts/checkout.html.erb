@@ -1,0 +1,6 @@
+<% if !logged_in? %>
+  <%= link_to 'Continuar como invitado', shipping_path, class: "btn btn-primary" %>
+  <%= render 'sessions/checkout_form' %>
+<% else %>
+  <% controller.redirect_to confirmation_path %>
+<% end %>
